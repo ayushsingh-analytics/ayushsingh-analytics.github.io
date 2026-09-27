@@ -391,136 +391,143 @@ img {
 
 
 /* =========================================
-   HERO CARD
+   3D PROFILE VISUAL
 ========================================= */
 
-.hero-card {
-
-    background:
-
-        linear-gradient(
-            145deg,
-            #1c1c1c,
-            #101010
-        );
-
-    border: 1px solid var(--border);
-
-    padding: 45px;
-
-    min-height: 400px;
+.hero-visual {
 
     display: flex;
 
-    flex-direction: column;
+    align-items: center;
 
-    justify-content: space-between;
+    justify-content: center;
 
-    position: relative;
+    min-height: 420px;
 
-    overflow: hidden;
+    perspective: 1200px;
 
     animation: fadeUp 1.2s ease forwards;
 
 }
 
 
-.hero-card::before {
+/*
+   Main 3D profile container
+*/
+
+.profile-3d {
+
+    width: 320px;
+
+    height: 400px;
+
+    position: relative;
+
+    transform-style: preserve-3d;
+
+    animation: profile360 10s linear infinite;
+
+    border-radius: 28px;
+
+}
+
+
+/*
+   Gold glow behind the photograph
+*/
+
+.profile-3d::before {
 
     content: '';
 
     position: absolute;
 
-    width: 250px;
+    width: 270px;
 
-    height: 250px;
+    height: 270px;
 
     background: var(--gold);
 
-    filter: blur(120px);
+    filter: blur(110px);
 
-    opacity: 0.12;
+    opacity: 0.16;
 
-    top: -100px;
+    top: 65px;
 
-    right: -80px;
+    left: 25px;
 
-}
-
-
-.card-top {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    color: var(--gold);
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
+    z-index: -1;
 
 }
 
 
-.hero-card h3 {
+/*
+   Profile photograph
+*/
 
-    font-family: 'Playfair Display', serif;
+.profile-image {
 
-    color: var(--white);
+    width: 100%;
 
-    font-size: 42px;
+    height: 100%;
 
-    line-height: 1.15;
+    object-fit: cover;
 
-}
+    display: block;
 
+    border-radius: 28px;
 
-.hero-card p {
+    border: 1px solid rgba(201, 164, 92, 0.65);
 
-    color: var(--muted);
+    box-shadow:
 
-}
+        0 0 30px rgba(201, 164, 92, 0.15),
 
+        0 25px 60px rgba(0, 0, 0, 0.50);
 
-.mini-stats {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 20px;
-
-    border-top: 1px solid var(--border);
-
-    padding-top: 25px;
+    transform: translateZ(1px);
 
 }
 
 
-.mini-stats div {
+/*
+   Subtle gold reflection
+*/
 
-    display: flex;
+.profile-3d::after {
 
-    flex-direction: column;
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 28px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    pointer-events: none;
 
 }
 
 
-.mini-stats strong {
+/*
+   360 degree rotation
+*/
 
-    color: var(--gold);
+@keyframes profile360 {
 
-    font-size: 24px;
+    from {
 
-}
+        transform: rotateY(0deg);
 
+    }
 
-.mini-stats small {
+    to {
 
-    color: var(--muted);
+        transform: rotateY(360deg);
 
-    font-size: 11px;
+    }
 
 }
 
@@ -840,6 +847,7 @@ img {
 
 /* =========================================
    PROJECT
+   KEPT FOR CSS COMPATIBILITY
 ========================================= */
 
 .project-card {
@@ -966,6 +974,7 @@ img {
 
 /* =========================================
    IMPACT
+   KEPT FOR CSS COMPATIBILITY
 ========================================= */
 
 .impact-grid {
@@ -1041,7 +1050,7 @@ img {
 
 
 /* =========================================
-   CERTIFICATIONS
+   CERTIFICATIONS / COURSES
 ========================================= */
 
 .certifications-section {
@@ -1155,6 +1164,55 @@ img {
     color: var(--muted);
 
     margin-top: 8px;
+
+}
+
+
+.education-item {
+
+    margin-top: 35px;
+
+    padding: 25px 0;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.education-item h3 {
+
+    color: var(--white);
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 24px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.education-item p {
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+}
+
+
+.education-item a {
+
+    color: var(--gold);
+
+    transition: 0.3s ease;
+
+}
+
+
+.education-item a:hover {
+
+    color: var(--gold-light);
 
 }
 
@@ -1299,9 +1357,20 @@ footer {
     }
 
 
-    .hero-card {
+    .hero-visual {
 
-        max-width: 600px;
+        min-height: 360px;
+
+        margin-top: 10px;
+
+    }
+
+
+    .profile-3d {
+
+        width: 280px;
+
+        height: 350px;
 
     }
 
@@ -1394,6 +1463,40 @@ footer {
     .hero-description {
 
         font-size: 15px;
+
+    }
+
+
+    .hero-visual {
+
+        min-height: 330px;
+
+        margin-top: 10px;
+
+    }
+
+
+    .profile-3d {
+
+        width: 240px;
+
+        height: 300px;
+
+        border-radius: 24px;
+
+    }
+
+
+    .profile-image {
+
+        border-radius: 24px;
+
+    }
+
+
+    .profile-3d::after {
+
+        border-radius: 24px;
 
     }
 
@@ -1522,6 +1625,21 @@ footer {
         gap: 8px;
 
         text-align: center;
+
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .profile-3d {
+
+        animation: none;
 
     }
 
